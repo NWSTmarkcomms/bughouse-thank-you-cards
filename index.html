@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bug House Marketing Portal</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body> <!-- START BODY TAG -->
+
+<header class="header">
+  <div class="logo-nav-container">
+    <img src="images/logo-placeholder.png" alt="Bug House Logo" class="logo">
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="leave-behinds.html">Leave Behinds</a>
+      <a href="door-hangers.html">Door Hangers</a>
+      <a href="thank-you-cards.html">Thank You Cards</a>
+      <a href="coffee-shop-cards.html">Coffee Shop Ta...</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="hero-banner">
+  <h1 class="hero-title">Marketing Material Portal</h1>
+</section>
+
+
+  <main>
+    <section class="product-grid">
+
+     
+    
+      <div class="product-card row-layout">
+  <div class="product-image">
+    <img src="images/BHPC-thank-you-card.jpg" alt="Thank You Card">
+  </div>
+  <div class="product-details">
+    <h2>Thank You Card</h2>
+      <form action="https://hooks.zapier.com/hooks/catch/12716030/uylxl5q/" method="POST" target="_blank" class="order-form">
+      <input type="text" name="fullName" placeholder="Manager Name" required>
+      <input type="email" name="email" placeholder="Manager Email" required>
+      <input type="number" name="quantity" placeholder="Quantity" min="1" required>
+      <select name="region" required>
+        <option value="">Select Office</option>
+        <option value="Augusta - BHPC">Augusta - BHPC</option>
+        <option value="Carrollton - BHPC">Carrollton - BHPC</option>
+        <option value="Dublin - BHPC">Dublin - BHPC</option>
+        <option value="Eastman - BHPC">Eastman - BHPC</option>
+        <option value="Greensboro - BHPC">Greensboro - BHPC</option>
+        <option value="Macon - BHPC">Macon - BHPC</option>
+        <option value="Madison - BHPC">Madison - BHPC</option>
+        <option value="Milledgeville - BHPC">Milledgeville - BHPC</option>
+        <option value="St. Simons Island - BHPC">St. Simons Island - BHPC</option>
+        <option value="Warner Robbins - BHPC">Warner Robbins - BHPC</option>
+        <option value="Watkinsville - BHPC">Watkinsville - BHPC</option>
+      </select>
+      <input type="hidden" name="product" value="Thank You Card">
+      <button type="submit" class="button">Request</button>
+    </form>
+  </div>
+</div>
+  
+</main>
+
+    
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Bug House Pest Control — Live Healthier Today</p>
+  </footer>
+  <script>
+    function handleSubmit(event, form) {
+      setTimeout(() => {
+        const parent = form.parentElement;
+        parent.innerHTML = `
+          <div class="thank-you-message">
+            <p>✅ You Make Pest Control Look Good! Your order will arrive at your office in less than 2 weeks. Thank you! </p>
+          </div>
+        `;
+      }, 500);
+    }
+  </script>
+</body>
+
+</html>
