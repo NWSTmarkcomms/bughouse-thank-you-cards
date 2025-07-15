@@ -11,13 +11,6 @@ body {
   text-align: center;
 }
 
-.navbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
 .logo-nav-container {
   display: flex;
   align-items: center;
@@ -26,27 +19,18 @@ body {
 }
 
 .logo {
-  height: 50px;
-  margin-right: 1rem;
-  display: block;
+  height: 60px;
 }
 
-
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
+.navbar {
+  display: flex;
+  gap: 20px;
 }
-
 
 .navbar a {
   color: white;
   text-decoration: none;
   font-weight: 600;
-}
-
-.navbar a:hover {
-  text-decoration: underline;
 }
 
 .hero-banner {
@@ -56,91 +40,72 @@ body {
   text-align: center;
 }
 
+.hero-title {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Fixed to 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   padding: 2rem;
-}
-
-@media (max-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr); /* Tablet layout */
-  }
-}
-
-@media (max-width: 600px) {
-  .product-grid {
-    grid-template-columns: 1fr; /* Mobile layout */
-  }
-}
-
-.product-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card.row-layout {
-  flex-direction: row;
-  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .product-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
 }
 
-.product-image {
-  width: 120px;
-  flex-shrink: 0;
+body.modal-open .product-card:hover {
+  transform: none;
 }
 
-.product-image img {
+.flyer-thumb {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-image img {
-  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .product-details {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.product-details h2 {
-  margin-top: 0;
-  font-size: 1rem;
-  color: #900;
+  gap: 0.75rem;
 }
 
 .product-details form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
 }
 
 .product-details input,
 .product-details select {
-  padding: 0.6rem;
+  padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
-.button {
+.product-details input::placeholder {
+  color: #000;
+  opacity: 1;
+}
+
+.product-details input:focus,
+.product-details select:focus {
+  border-color: #b00;
+  outline: none;
+}
+
+.product-details button {
   padding: 0.75rem;
   background-color: #b00;
   color: white;
@@ -148,9 +113,112 @@ body {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
   width: fit-content;
 }
 
-.button:hover {
+.product-details button:hover {
   background-color: #900;
 }
+
+
+.row-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.flyer-expand-toggle {
+  flex: 0 0 200px;
+  max-width: 200px;
+}
+
+.expand-checkbox:checked ~ .flyer-expanded-view {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.flyer-thumb-container {
+  display: block;
+  cursor: pointer;
+}
+
+.flyer-expanded-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.flyer-close-button {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.flyer-close-button:hover {
+  color: #ccc;
+}
+
+.flyer-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.flyer-expanded-view img.flyer-expanded-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: auto;
+}
+
+
+.product-card .product-title {
+  font-size: 1.5rem;
+  color: #b00;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+.product-card {
+  background: #fffdf5; /* ✅ soft cream color */
+  border: 1px solid #e8e6dd; /* optional subtle border */
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); /* gentle lift */
+  transition: transform 0.3s ease;
+  transform: scale(0.85); /* Shrinks the card */
+  transform-origin: top left; /* Keeps alignment natural */
+}
+
